@@ -8,7 +8,7 @@ import time
 
 import tensorflow as tf
 import tensorflow.contrib.eager as tfe
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 import utils
 

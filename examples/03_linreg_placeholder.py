@@ -9,7 +9,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import time
 
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import tensorflow as tf
 
 import utils
@@ -63,7 +63,7 @@ with tf.Session() as sess:
 print('Took: %f seconds' %(time.time() - start))
 
 # plot the results
-plt.plot(data[:,0], data[:,1], 'bo', label='Real data')
-plt.plot(data[:,0], data[:,0] * w_out + b_out, 'r', label='Predicted data')
-plt.legend()
-plt.show()
+# plt.plot(data[:,0], data[:,1], 'bo', label='Real data')
+# plt.plot(data[:,0], data[:,0] * w_out + b_out, 'r', label='Predicted data')
+# plt.legend()
+# plt.show()

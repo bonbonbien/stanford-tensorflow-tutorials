@@ -9,7 +9,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import time
 
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import tensorflow as tf
 
 import utils
@@ -47,12 +47,15 @@ with tf.Session() as sess:
     
     # Step 8: train the model for 100 epochs
     for i in range(100):
+        w_tmp, b_tmp = sess.run([w, b])
+        print('w_tmp: %f, b_tmp: %f' % (w_tmp, b_tmp))
         sess.run(iterator.initializer) # initialize the iterator
         total_loss = 0
         try:
             while True:
                 _, l = sess.run([optimizer, loss]) 
                 total_loss += l
+                # print(total_loss)
         except tf.errors.OutOfRangeError:
             pass
             
@@ -67,8 +70,16 @@ with tf.Session() as sess:
 print('Took: %f seconds' %(time.time() - start))
 
 # plot the results
-plt.plot(data[:,0], data[:,1], 'bo', label='Real data')
-plt.plot(data[:,0], data[:,0] * w_out + b_out, 'r', label='Predicted data with squared error')
-# plt.plot(data[:,0], data[:,0] * (-5.883589) + 85.124306, 'g', label='Predicted data with Huber loss')
-plt.legend()
-plt.show()
+# plt.plot(data[:,0], data[:,1], 'bo', label='Real data')
+# plt.plot(data[:,0], data[:,0] * w_out + b_out, 'r', label='Predicted data with squared error')
+# # plt.plot(data[:,0], data[:,0] * (-5.883589) + 85.124306, 'g', label='Predicted data with Huber loss')
+# plt.legend()
+# plt.show()
+
+# np.save('../plot/plot_data/03_linreg_dataset.npy', data)
+# a = np.load('../plot/plot_data/03_linreg_dataset.npy')
+# (data == a).all()
+#
+# import json
+# with open('../plot/plot_data/03_linreg_dataset.txt', 'w') as f:
+#     f.write(json.dumps({'w_out': float(w_out), 'b_out': float(b_out)}, ensure_ascii=False))
