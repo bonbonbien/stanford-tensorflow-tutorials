@@ -1,6 +1,5 @@
-
 *.pdf
-
+*.zip
 *.SUNet
 *.pyc
 .env/*
